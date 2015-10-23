@@ -1,31 +1,12 @@
 <?php
 
-class Person {
+require_once('AbstractPerson.php');
+
+class Person extends AbstractPerson {
   public $name, $age, $height;
 
   public function __construct($name = NULL) {
     $this->setName($name);
-  }
-
-  public function setName($name) {
-    $this->name = $name;
-  }
-  public function getName() {
-    return $this->name;
-  }
-
-  public function setAge($age) {
-    $this->age = $age;
-  }
-  public function getAge() {
-    return $this->age;
-  }
-
-  public function setHeight($height) {
-    $this->height = $height;
-  }
-  public function getHeight() {
-    return $this->height;
   }
 }
 
@@ -41,6 +22,12 @@ echo "Height: ", $person->getHeight(), PHP_EOL;
 var_export($person);
 echo PHP_EOL;
 
-echo "\$person is ";
-echo is_a($person, 'Person') ? "" : "not ";
-echo "a person.", PHP_EOL;
+$classes = array(
+  'Person',
+  'AbstractPerson',
+);
+foreach ($classes as $class) {
+  echo "\$person is ";
+  echo is_a($person, $class) ? "" : "not ";
+  echo "a $class.", PHP_EOL;
+}
