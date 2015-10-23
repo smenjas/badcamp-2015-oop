@@ -1,6 +1,8 @@
 <?php
 
-abstract class AbstractPerson {
+require_once('PersonInterface.php');
+
+abstract class AbstractPerson implements PersonInterface {
   abstract public function __construct($name = NULL);
 
   public function setName($name) {
